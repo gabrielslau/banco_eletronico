@@ -22,11 +22,11 @@ public class ContaService extends AbstractPersistence<Conta, Long> {
 	public ContaService() {
 		super(Conta.class);
 	}
-	
+
 	public Conta recuperarConta(int numero){
 		return em.find(Conta.class,numero);
 	}
-	public Conta AtualizarConta(Conta conta){
+	public Conta atualizarConta(Conta conta){
 		return em.merge(conta);
 	}
 }
