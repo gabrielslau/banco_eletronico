@@ -17,4 +17,11 @@ public class ContaMB extends AppMB {
 	public ContaMB(){
 		super();
 	}
+	
+	private String OpDeposito(){
+		return "formDeposito.xhml";
+	}
+	private String OpSaque(){
+		return "formSaque.xhml";
+	}
 }

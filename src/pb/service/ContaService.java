@@ -11,7 +11,7 @@ public class ContaService extends AbstractPersistence<Conta, Long> {
 	/**
 	 * O container injeta a referência para o EntityManager.
 	 */
-	@PersistenceContext(unitName="personalBiblio")
+	@PersistenceContext(unitName="bancoEletronico")
 	private EntityManager em;
 
 	@Override
@@ -21,5 +21,12 @@ public class ContaService extends AbstractPersistence<Conta, Long> {
 
 	public ContaService() {
 		super(Conta.class);
+	}
+	
+	public Conta recuperarConta(int numero){
+		return em.find(Conta.class,numero);
+	}
+	public Conta AtualizarConta(Conta conta){
+		return em.merge(conta);
 	}
 }
