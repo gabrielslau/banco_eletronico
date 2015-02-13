@@ -8,9 +8,6 @@ import pb.entity.Conta;
 
 @Stateless
 public class ContaService extends AbstractPersistence<Conta, Long> {
-	/**
-	 * O container injeta a referência para o EntityManager.
-	 */
 	@PersistenceContext(unitName="bancoEletronico")
 	private EntityManager em;
 
