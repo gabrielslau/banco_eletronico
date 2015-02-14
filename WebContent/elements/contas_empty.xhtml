@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+	<ui:composition>
+		<h:panelGroup layout="block" rendered="#{contaMB.vazio}"
+			styleClass="jumbotron text-center">
+			<p class="lead">#{msg['contas.empty']}</p>
+			<h:form>
+				<p>
+					<a class="btn btn-primary" href="#{root}contas/add.jsf">#{msg['contas.add']}</a>
+				</p>
+			</h:form>
+		</h:panelGroup>
+	</ui:composition>
+</h:body>
+</html>

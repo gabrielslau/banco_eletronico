@@ -4,9 +4,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-<f:loadBundle basename="resources.application" var="msg" />
 
-<c:set var="root" value="#{request.contextPath}/app/" />
+<f:loadBundle basename="resources.application" var="msg" />
+<c:set var="root" value="#{request.contextPath}/" />
 <!-- see: http://stackoverflow.com/questions/6878275/how-get-the-base-url -->
 
 <h:head>
@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+	<title><h:outputText value="#{msg['app.welcome']}" /></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 </h:head>
 <h:body>
@@ -24,7 +24,7 @@
 	<div class="container">
 		<section id="content">
 			<ui:insert name="content">
-				<div class="jumbotrom"><p class="lead">#{msg.welcomeHeading}</p></div>
+				<div class="jumbotrom"><p class="lead">#{msg['app.welcome']}</p></div>
 			</ui:insert>
 		</section>
 	</div>

@@ -3,13 +3,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-<f:loadBundle basename="resources.application" var="msg" />
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+	<title><h:outputText value="#{msg['app.welcome']}" /></title>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 </h:head>
@@ -21,32 +21,18 @@
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">#{msg.nav_toggle}</span> <span
+					<span class="sr-only">#{msg['nav.toggle']}</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#{root}index.xhtml"><h:outputText
-						value="#{msg.welcomeTitle}" /></a>
+				<a class="navbar-brand" href="#{root}"><h:outputText
+						value="#{msg['app.title']}" /></a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<h:form>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#{root}index.xhtml">#{msg.nav_index}</a></li>
-						<li><h:commandLink value="#{msg.nav_produto_add}"
-								action="produto_add.xhtml?faces-redirect=true"
-								rendered="#{sessaoMB.logado}"></h:commandLink></li>
-						<li><h:commandLink value="#{msg.nav_carrinho}"
-								action="carrinho.xhtml?faces-redirect=true"
-								rendered="#{carrinhoMB.possuiItens}"></h:commandLink></li>
-						<li><h:commandLink value="#{msg.nav_login}"
-								action="login.xhtml?faces-redirect=true"
-								rendered="#{sessaoMB.notLogado}" immediate="true"></h:commandLink></li>
-						<li><h:commandLink
-								value="#{msg.nav_logout} (#{sessaoMB.usuario.nome})"
-								action="#{sessaoMB.logout}" rendered="#{sessaoMB.logado}"></h:commandLink></li>
-						<li><h:commandLink value="#{msg.nav_venda}"
-								action="vendas.xhtml?faces-redirect=true"
-								rendered="#{sessaoMB.logado and vendaMB.possuiItens}"></h:commandLink></li>
+						<li><a href="#{root}contas/index.jsf">#{msg['contas.index']}</a></li>
+						<li><a href="#{root}contas/transferir.jsf">#{msg['contas.transferir']}</a></li>
 					</ul>
 				</h:form>
 			</div>

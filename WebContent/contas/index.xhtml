@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="../layout/default.xhtml">
+		<ui:define name="content">
+			<h1>
+				<h:outputText value="#{msg['contas.index']}" />
+				<a class="pull-right small btn btn-default"
+					href="#{root}contas/add.jsf">#{msg['contas.add']}</a>
+			</h1>
+
+			<h:dataTable border="1" value="#{contaMB.contas}" var="c"
+				styleClass="table table-bordered" rendered="#{contaMB.notVazio}">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['contas.form.fields.numero']}"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{c.numero}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['contas.form.fields.saldo']}"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{c.saldo}"></h:outputText>
+				</h:column>
+			</h:dataTable>
+
+			<ui:include src="/elements/contas_empty.xhtml" />
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
