@@ -1,7 +1,10 @@
 package pb.exception;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback=true)
 public class ContaInvalidaException extends Exception {
-	private static final long serialVersionUID = -2357408465106049510L;
+	private static final long serialVersionUID = 1L;
 
 	public ContaInvalidaException() {
 	}

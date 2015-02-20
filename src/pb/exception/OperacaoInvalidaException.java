@@ -1,7 +1,10 @@
 package pb.exception;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback=true)
 public class OperacaoInvalidaException extends Exception {
-	private static final long serialVersionUID = 5922494527557917728L;
+	private static final long serialVersionUID = 1L;
 
 	public OperacaoInvalidaException() {
 	}

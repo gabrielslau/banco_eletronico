@@ -1,8 +1,11 @@
 package pb.exception;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback=true)
 public class DinheiroInsuficienteException extends Exception {
 
-	private static final long serialVersionUID = 5203465036835913177L;
+	private static final long serialVersionUID = 1L;
 
 	public DinheiroInsuficienteException() {
 	}
