@@ -17,7 +17,7 @@ import pb.fachada.BancoEletronicoFachada;
 @RequestScoped
 public class ContaMB extends AppMB {
 
-	private static final long serialVersionUID = -9134339686284102303L;
+	private static final long serialVersionUID = 1L;
 
 	@EJB
 	private BancoEletronicoFachada fachada;
@@ -26,13 +26,11 @@ public class ContaMB extends AppMB {
 	private Conta conta;
 	private int numeroContaOrigem, numeroContaDestino;
 	private double quantidade;
-	private String mensagem;
 
 	public ContaMB() {
 		super();
 		contas = new ArrayList<Conta>();
 		conta = new Conta();
-		mensagem = "";
 	}
 
 	@Deprecated
@@ -53,18 +51,17 @@ public class ContaMB extends AppMB {
 		}
 	}
 
-	public String transferir(){
+	public String transferir() {
 		try {
 			if (fachada.transferir(quantidade, numeroContaOrigem,
 					numeroContaDestino)) {
 				this.redirect("contas/index");
 			}
-		} catch (OperacaoInvalidaException | ContaInvalidaException e) {
-			setMensagem(e.getMessage());
-		} catch (DinheiroInsuficienteException e) {
+		} catch (OperacaoInvalidaException | ContaInvalidaException
+				| DinheiroInsuficienteException e) {
 			setMensagem(e.getMessage());
 		}
-		return "contas/idnex.xhtml";
+		return "contas/index.xhtml";
 	}
 
 	public Conta getConta() {
@@ -114,18 +111,5 @@ public class ContaMB extends AppMB {
 
 	public void setNumeroContaDestino(int numeroContaDestino) {
 		this.numeroContaDestino = numeroContaDestino;
-	}
-	public String getMensagem() {
-		String retorno = this.mensagem;
-		this.mensagem = new String();
-		return retorno;
-	}
-
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
-
-	public boolean isTemMensagem() {
-		return !this.mensagem.isEmpty();
 	}
 }

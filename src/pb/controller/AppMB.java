@@ -11,9 +11,11 @@ public abstract class AppMB implements Serializable {
 
 	private static final long serialVersionUID = 1192504063426767776L;
 	private ExternalContext externalContext;
+	private String mensagem;
 
 	public AppMB() {
 		super();
+		this.mensagem = "";
 	}
 
 	/**
@@ -38,5 +40,19 @@ public abstract class AppMB implements Serializable {
 	 */
 	public void redirect(String page) {
 		this.redirect(page, "");
+	}
+	
+	public String getMensagem() {
+		String retorno = this.mensagem;
+		this.mensagem = new String();
+		return retorno;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public boolean isTemMensagem() {
+		return !this.mensagem.isEmpty();
 	}
 }

@@ -21,23 +21,19 @@ public class BancoEletronicoFachadaImpl implements BancoEletronicoFachada {
 	@EJB
 	private ContaService service;
 
-	// TODO: saber como abortar a transação
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public boolean transferir(double quanto, int deQualConta, int paraQualConta)
-			throws OperacaoInvalidaException, ContaInvalidaException, DinheiroInsuficienteException {
+			throws ContaInvalidaException, DinheiroInsuficienteException,
+			OperacaoInvalidaException {
+		
+		if(deQualConta == paraQualConta)
+			throw new ContaInvalidaException("A conta de destino é igual à conta de origem");
 
-		Conta contaOrigem = service.recuperarConta(deQualConta);
-		Conta contaDestino = service.recuperarConta(paraQualConta);
+		service.withdraw(deQualConta, quanto);
+		service.deposit(paraQualConta, quanto);
 
-		if (contaOrigem == null) {
-			throw new ContaInvalidaException("A conta de origem não existe");
-		} else if (contaDestino == null) {
-			throw new ContaInvalidaException(
-					"A conta de destino não existe");
-		}
-		service.withdraw(contaOrigem, quanto);
-		return service.deposit(contaDestino, quanto) > quanto;
+		return service.getSaldo(paraQualConta) >= quanto;
 	}
 
 	@Override
