@@ -14,19 +14,22 @@
 			</h1>
 
 			<f:view>
-				<h:outputText value="#{contaMB.mensagem}"
-					rendered="#{contaMB.temMensagem}" styleClass="text-danger"></h:outputText>
+				<h:panelGroup rendered="#{contaMB.temMensagem}">
+					<h:outputText value="#{contaMB.mensagem}" styleClass="alert alert-danger show"></h:outputText>
+				</h:panelGroup>
 
 				<h:form action="#{contaMB.transferir}">
 					<h:panelGrid columns="2" border="1"
 						styleClass="table table-bordered">
 						<h:outputLabel value="#{msg['contas.form.fields.numero']}: "></h:outputLabel>
-						<h:inputText value="#{contaMB.numeroContaOrigem}"
-							styleClass="form-control" required="true"></h:inputText>
+						<h:selectOneMenu value="#{contaMB.numeroContaOrigem}" styleClass="form-control" required="true">
+							<f:selectItems value="#{contaMB.contas}" var="conta" itemValue="#{conta.numero}" itemLabel="#{conta.numero}" />
+						</h:selectOneMenu>
 						
 						<h:outputLabel value="#{msg['contas.form.fields.numero']}: "></h:outputLabel>
-						<h:inputText value="#{contaMB.numeroContaDestino}"
-							styleClass="form-control" required="true"></h:inputText>
+						<h:selectOneMenu value="#{contaMB.numeroContaDestino}" styleClass="form-control" required="true">
+							<f:selectItems value="#{contaMB.contas}" var="conta" itemValue="#{conta.numero}" itemLabel="#{conta.numero}" />
+						</h:selectOneMenu>
 							
 						<h:outputLabel value="#{msg['contas.form.fields.quantidade']}: "></h:outputLabel>
 						<h:inputText value="#{contaMB.quantidade}"
